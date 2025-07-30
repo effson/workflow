@@ -8,7 +8,8 @@
  * get队列: head2/get_head,消费者从中取消息的地方
  *
  * 采用双队列设计，实现高效多线程通信：
- * 降低锁竞争，put和get分别用各自的锁互不干扰
+ * 降低锁竞争，put和get分别用各自的锁互不干扰，减少了碰撞的概率
+ * 多对多转化为一对多，有多个put和get的mutex和cond
  */
 struct __msgqueue
 {
